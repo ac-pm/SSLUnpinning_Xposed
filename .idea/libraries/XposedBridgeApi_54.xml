@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="XposedBridgeApi-54">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/libs/XposedBridgeApi-54.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

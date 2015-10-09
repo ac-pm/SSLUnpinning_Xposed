@@ -1,0 +1,65 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                tools:context=".AppListActivity"
+                android:background="@android:color/background_dark">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/bypassed_txt"
+        android:textColor="#ff0dff11"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/apps_view"
+        android:layout_alignEnd="@+id/apps_view" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/apps_view"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:choiceMode="singleChoice"
+        android:divider="@android:color/background_light"
+        android:dividerHeight="1px"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageViewIcon"
+        android:maxWidth="@dimen/abc_dropdownitem_icon_width"
+        android:layout_alignTop="@+id/apps_view"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/textViewPackLable"
+        android:layout_below="@+id/textViewLable"
+        android:layout_alignLeft="@+id/textViewLable"
+        android:layout_alignStart="@+id/textViewLable"
+        android:layout_alignRight="@+id/apps_view"
+        android:layout_alignEnd="@+id/apps_view"
+        android:textColor="@android:color/background_light" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/textViewLable"
+        android:layout_marginLeft="29dp"
+        android:layout_marginStart="29dp"
+        android:layout_alignTop="@+id/apps_view"
+        android:layout_toRightOf="@+id/imageViewIcon"
+        android:textColor="@android:color/background_light"
+        android:layout_alignRight="@+id/apps_view" />
+
+</RelativeLayout>
