@@ -64,17 +64,17 @@ public class Module implements IXposedHookLoadPackage {
 
         //HttpsURLConnection.setSSLSocketFactory >> new SSLSocketFactory
         findAndHookMethod("javax.net.ssl.HttpsURLConnection", loadPackageParam.classLoader, "setSSLSocketFactory", javax.net.ssl.SSLSocketFactory.class, new XC_MethodHook() {
-
             @Override
             protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
                 param.args[0] = newInstance(javax.net.ssl.SSLSocketFactory.class);
             }
         });
 
-        //HttpsURLConnection.setDefaultHostnameVerifier >> SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER
-        findAndHookMethod("javax.net.ssl.HttpsURLConnection", loadPackageParam.classLoader, "setDefaultHostnameVerifier",
-                HostnameVerifier.class, new XC_MethodHook() {
+        // --- APACHE ---
 
+        //HttpsURLConnection.setDefaultHostnameVerifier >> SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER
+        findAndHookMethod("org.apache.http.conn.ssl.HttpsURLConnection", loadPackageParam.classLoader, "setDefaultHostnameVerifier",
+                HostnameVerifier.class, new XC_MethodHook() {
                     @Override
                     protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
                         param.args[0] = SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER;
@@ -82,16 +82,13 @@ public class Module implements IXposedHookLoadPackage {
                 });
 
         //HttpsURLConnection.setHostnameVerifier >> SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER
-        findAndHookMethod("javax.net.ssl.HttpsURLConnection", loadPackageParam.classLoader, "setHostnameVerifier", HostnameVerifier.class,
+        findAndHookMethod("org.apache.http.conn.ssl.HttpsURLConnection", loadPackageParam.classLoader, "setHostnameVerifier", HostnameVerifier.class,
                 new XC_MethodHook() {
-
                     @Override
                     protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
                         param.args[0] = SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER;
                     }
                 });
-
-        // --- APACHE ---
 
         //SSLSocketFactory.getSocketFactory >> new SSLSocketFactory
         findAndHookMethod("org.apache.http.conn.ssl.SSLSocketFactory", loadPackageParam.classLoader, "getSocketFactory", new XC_MethodHook() {
