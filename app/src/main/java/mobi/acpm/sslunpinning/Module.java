@@ -97,6 +97,7 @@ public class Module implements IXposedHookLoadPackage {
                 param.setResult((SSLSocketFactory) newInstance(SSLSocketFactory.class));
             }
         });
+
         /**
          * org.apache.http.conn.ssl.SSLSocketFactory(...){
          195        if (algorithm == null) {
@@ -144,13 +145,7 @@ public class Module implements IXposedHookLoadPackage {
 
                 });
 
-        //SSLSocketFactory.getSocketFactory >> new SSLSocketFactory
-        findAndHookMethod("org.apache.http.conn.ssl.SSLSocketFactory", loadPackageParam.classLoader, "getSocketFactory", new XC_MethodHook() {
-            @Override
-            protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
-                param.setResult((SSLSocketFactory) newInstance(SSLSocketFactory.class));
-            }
-        });
+
 
         //SSLSocketFactory.isSecure >> true
         findAndHookMethod("org.apache.http.conn.ssl.SSLSocketFactory", loadPackageParam.classLoader, "isSecure", Socket.class, new XC_MethodHook() {
