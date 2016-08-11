@@ -20,6 +20,6 @@ android {
 }
 
 dependencies {
-    provided 'de.robv.android.xposed:api:54'
+    provided 'de.robv.android.xposed:api:53'
     compile 'com.android.support:appcompat-v7:22.2.0'
 }
