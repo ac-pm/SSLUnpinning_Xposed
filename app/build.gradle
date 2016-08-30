@@ -20,7 +20,6 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    provided 'de.robv.android.xposed:api:53'
     compile 'com.android.support:appcompat-v7:22.2.0'
-    compile files('libs/XposedBridgeApi-54.jar')
 }
