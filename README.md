@@ -6,8 +6,8 @@ Android Xposed Module to bypass SSL certificate validation (Certificate Pinning)
 Description
 -----------
 
-If you need intercept the traffic from one app who use certificate pinning, with a tool like Burp Proxy, the SSLUnpinning help you with this hard work! 
-The SSLUnpinning through Xposed Framework, make severous hooks in SSL classes to bypass the certificate verifications for one specific app, then you can intercept all your traffic.
+If you need to intercept the traffic from an app which uses certificate pinning, with a tool like Burp Proxy, the SSLUnpinning will help you with this hard work!
+The SSLUnpinning through Xposed Framework, makes several hooks in SSL classes to bypass the certificate verifications for one specific app, then you can intercept all your traffic.
 
 Usage
 ---------------
@@ -28,7 +28,7 @@ Get it from Xposed repo: http://repo.xposed.info/module/mobi.acpm.sslunpinning
 
 ### How to uninstall
 
-        adb uninstall SSLUnpinning_XposedMod.apk
+        adb uninstall mobi.acpm.sslunpinning
         
 Screenshots
 
