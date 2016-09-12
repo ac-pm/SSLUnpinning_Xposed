@@ -26,12 +26,12 @@ OKHTTP
 Usage
 ---------------
 
-* install Xposed in your device (root access on Android 4.0.3 or later);
+* install Xposed in your device (root access on Android 5.1 or later);
 http://repo.xposed.info/module/de.robv.android.xposed.installer
 * Download the APK available here https://github.com/ac-pm/SSLUnpinning_Xposed or clone the project and compile;
-* Install SSLUnpinning_XposedMod.apk on a device with Xposed:
+* Install mobi.acpm.sslunpinning_latest.apk on a device with Xposed:
 
-        adb install SSLUnpinning_XposedMod.apk
+        adb install mobi.acpm.sslunpinning_latest.apk
  
 * SSLUnpinning will list the applications to choose from which will be unpinned;
 * Ok! Now you can intercept all traffic from the chosen app.
