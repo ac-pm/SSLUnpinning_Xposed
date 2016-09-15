@@ -2,6 +2,7 @@ package mobi.acpm.sslunpinning;
 
 import org.apache.http.conn.scheme.HostNameResolver;
 import org.apache.http.conn.ssl.SSLSocketFactory;
+import org.apache.http.conn.scheme.Scheme;
 
 import java.net.Socket;
 import java.security.KeyStore;
@@ -91,6 +92,17 @@ public class Module implements IXposedHookLoadPackage, IXposedHookZygoteInit {
             XposedBridge.log("Unpinning_error: " + e.getMessage());
         }
         // --- APACHE ---
+
+        //SchemeRegistry.register >> new Scheme
+        findAndHookMethod("org.apache.http.conn.scheme.SchemeRegistry", loadPackageParam.classLoader, "register", org.apache.http.conn.scheme.Scheme.class, new XC_MethodHook() {
+            @Override
+            protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
+                Scheme scheme = (Scheme)param.args[0];
+                if (scheme.getName() =="https") {
+                    param.args[0] = new Scheme("https", SSLSocketFactory.getSocketFactory(), 443);
+                }
+            }
+        });
 
         //HttpsURLConnection.setDefaultHostnameVerifier >> SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER
         try {
